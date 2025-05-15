@@ -1,0 +1,38 @@
+livros = []
+print('\n\t\t --- GERENCIAMENTO DE LIVRO ---\n')
+
+while True:
+    print('1 - Adicionar livro:')
+    print('2 - Listar livros')
+    print('3 - Buscar por autor')
+    print('4 - Calcular média de páginas')
+    print('0 - Sair')
+
+    opcao=int(input('digite sua opçao:'))
+
+    if opcao == 1:
+            titulo = input("Digite o título: ")
+            autor = input("Digite o autor: ")
+            ano = int(input("Digite o ano: "))
+            paginas = int(input("Digite o número de páginas: "))
+            livros.append({"titulo": titulo, "autor": autor, "ano": ano, "paginas": paginas})
+            print("Livro adicionado com sucesso!\n")
+    elif opcao == 2:
+          print(f'{livros}')
+    elif opcao == 3:
+        autor_busca =input('Digite o autor para buscar: ')
+        encontrou = False
+        for livro in livros:
+              if livro['autor'] == autor_busca:
+                  print(f"Livro: {livro['titulo']} ({livro['ano']})")
+                  encontrou = True
+        if not encontrou:
+            print("Nenhum livro deste autor encontrado.")
+    elif opcao == 4:
+        if livros:
+            media = sum(livro['paginas'] for livro in livros) / len(livros)
+            print(f'Média de páginas: {media:.1f}')
+        else:
+            print("Nenhum livro cadastrado.")
+    elif opcao == 0:
+         break
